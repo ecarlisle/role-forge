@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { evaluateMatch } from "../src/evaluate-match";
 import type { CareerProfile, NormalizedListing } from "../src/schemas";
 
@@ -177,9 +177,7 @@ describe("evaluateMatch", () => {
 
     const result = evaluateMatch(profile, listing);
 
-    const locationDimension = result.dimensions.find(
-      (d) => d.name === "Location & remote",
-    );
+    const locationDimension = result.dimensions.find((d) => d.name === "Location & remote");
     expect(locationDimension).toBeDefined();
   });
 
@@ -233,7 +231,10 @@ describe("evaluateMatch", () => {
 
   it("handles missing title gracefully", () => {
     const profile = createProfile();
-    const listing = createListing({ title: null, confidence: { ...createListing().confidence, title: "none" } });
+    const listing = createListing({
+      title: null,
+      confidence: { ...createListing().confidence, title: "none" },
+    });
 
     const result = evaluateMatch(profile, listing);
 

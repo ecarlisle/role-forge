@@ -26,54 +26,149 @@ import type { NormalizedListing } from "./schemas";
 // ---------------------------------------------------------------------------
 
 const SKILL_VOCABULARY: Record<string, string[]> = {
-  "Frontend": [
-    "React", "Vue", "Angular", "Svelte", "Next.js", "Nuxt", "Remix",
-    "Gatsby", "Astro", "SolidJS", "Preact", "Lit",
+  Frontend: [
+    "React",
+    "Vue",
+    "Angular",
+    "Svelte",
+    "Next.js",
+    "Nuxt",
+    "Remix",
+    "Gatsby",
+    "Astro",
+    "SolidJS",
+    "Preact",
+    "Lit",
   ],
-  "Languages": [
-    "TypeScript", "JavaScript", "Python", "Rust", "Go", "Java", "C#",
-    "C++", "Ruby", "PHP", "Swift", "Kotlin", "Dart", "Scala", "Elixir",
-    "Haskell", "Clojure", "Lua", "Zig",
+  Languages: [
+    "TypeScript",
+    "JavaScript",
+    "Python",
+    "Rust",
+    "Go",
+    "Java",
+    "C#",
+    "C++",
+    "Ruby",
+    "PHP",
+    "Swift",
+    "Kotlin",
+    "Dart",
+    "Scala",
+    "Elixir",
+    "Haskell",
+    "Clojure",
+    "Lua",
+    "Zig",
   ],
-  "Backend": [
-    "Node.js", "Express", "Fastify", "Django", "Flask", "FastAPI",
-    "Spring Boot", "Rails", "Laravel", "Phoenix", "Actix", "Axum",
-    "NestJS", "Hono", "Elysia",
+  Backend: [
+    "Node.js",
+    "Express",
+    "Fastify",
+    "Django",
+    "Flask",
+    "FastAPI",
+    "Spring Boot",
+    "Rails",
+    "Laravel",
+    "Phoenix",
+    "Actix",
+    "Axum",
+    "NestJS",
+    "Hono",
+    "Elysia",
   ],
-  "Database": [
-    "PostgreSQL", "MySQL", "MongoDB", "Redis", "SQLite", "DynamoDB",
-    "Cassandra", "Elasticsearch", "Supabase", "PlanetScale", "Neon",
-    "Turso", "CockroachDB",
+  Database: [
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Redis",
+    "SQLite",
+    "DynamoDB",
+    "Cassandra",
+    "Elasticsearch",
+    "Supabase",
+    "PlanetScale",
+    "Neon",
+    "Turso",
+    "CockroachDB",
   ],
-  "DevOps": [
-    "Docker", "Kubernetes", "AWS", "GCP", "Azure", "Terraform",
-    "Ansible", "Jenkins", "GitHub Actions", "GitLab CI", "CircleCI",
-    "Vercel", "Cloudflare", "Fly.io",
+  DevOps: [
+    "Docker",
+    "Kubernetes",
+    "AWS",
+    "GCP",
+    "Azure",
+    "Terraform",
+    "Ansible",
+    "Jenkins",
+    "GitHub Actions",
+    "GitLab CI",
+    "CircleCI",
+    "Vercel",
+    "Cloudflare",
+    "Fly.io",
   ],
-  "Testing": [
-    "Jest", "Vitest", "Mocha", "Cypress", "Playwright", "Puppeteer",
-    "Testing Library", "Storybook", "Chromatic",
+  Testing: [
+    "Jest",
+    "Vitest",
+    "Mocha",
+    "Cypress",
+    "Playwright",
+    "Puppeteer",
+    "Testing Library",
+    "Storybook",
+    "Chromatic",
   ],
   "CSS & Styling": [
-    "Tailwind", "Sass", "SCSS", "CSS Modules", "Styled Components",
-    "Emotion", "CSS-in-JS", "PostCSS", "Radix UI", "Headless UI",
+    "Tailwind",
+    "Sass",
+    "SCSS",
+    "CSS Modules",
+    "Styled Components",
+    "Emotion",
+    "CSS-in-JS",
+    "PostCSS",
+    "Radix UI",
+    "Headless UI",
     "shadcn/ui",
   ],
   "Tools & Practices": [
-    "Git", "GraphQL", "REST", "gRPC", "WebSocket", "OAuth",
-    "Webpack", "Vite", "esbuild", "Turborepo", "Nx", "Bun", "Deno",
-    "Agile", "Scrum", "CI/CD", "TDD", "DDD", "Microservices",
-    "Monorepo", "Figma",
+    "Git",
+    "GraphQL",
+    "REST",
+    "gRPC",
+    "WebSocket",
+    "OAuth",
+    "Webpack",
+    "Vite",
+    "esbuild",
+    "Turborepo",
+    "Nx",
+    "Bun",
+    "Deno",
+    "Agile",
+    "Scrum",
+    "CI/CD",
+    "TDD",
+    "DDD",
+    "Microservices",
+    "Monorepo",
+    "Figma",
   ],
   "Soft Skills": [
-    "Leadership", "Mentoring", "Communication", "Collaboration",
-    "Problem-solving", "Project management",
+    "Leadership",
+    "Mentoring",
+    "Communication",
+    "Collaboration",
+    "Problem-solving",
+    "Project management",
   ],
 };
 
 // Build a flat set of all known skill names (lowercased for matching).
 const ALL_SKILLS: Map<string, string> = new Map();
-for (const [category, skills] of Object.entries(SKILL_VOCABULARY)) {
+for (const [, skills] of Object.entries(SKILL_VOCABULARY)) {
   for (const skill of skills) {
     ALL_SKILLS.set(skill.toLowerCase(), skill);
   }
@@ -89,11 +184,26 @@ interface SectionPattern {
 }
 
 const SECTION_PATTERNS: SectionPattern[] = [
-  { name: "requirements", pattern: /^(?:requirements|qualifications|what you'?ll need|you should have|must haves?|required skills?|what we'?re looking for)\s*:?\s*$/i },
-  { name: "responsibilities", pattern: /^(?:responsibilities|what you'?ll do|your role|day.to.day|what you will do|key responsibilities|duties)\s*:?\s*$/i },
+  {
+    name: "requirements",
+    pattern:
+      /^(?:requirements|qualifications|what you'?ll need|you should have|must haves?|required skills?|what we'?re looking for)\s*:?\s*$/i,
+  },
+  {
+    name: "responsibilities",
+    pattern:
+      /^(?:responsibilities|what you'?ll do|your role|day.to.day|what you will do|key responsibilities|duties)\s*:?\s*$/i,
+  },
   { name: "about", pattern: /^(?:about(?:\s+(?:us|the company|the team))?)\s*:?\s*$/i },
-  { name: "benefits", pattern: /^(?:benefits|perks|what we offer|compensation(?:\s*&\s*benefits)?|salary)\s*:?\s*$/i },
-  { name: "description", pattern: /^(?:(?:the\s+)?role|job description|about the role|position overview|summary)\s*:?\s*$/i },
+  {
+    name: "benefits",
+    pattern: /^(?:benefits|perks|what we offer|compensation(?:\s*&\s*benefits)?|salary)\s*:?\s*$/i,
+  },
+  {
+    name: "description",
+    pattern:
+      /^(?:(?:the\s+)?role|job description|about the role|position overview|summary)\s*:?\s*$/i,
+  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -123,9 +233,7 @@ function detectSkills(text: string): string[] {
   return [...found].sort();
 }
 
-function splitIntoSections(
-  lines: string[],
-): Map<string, string[]> {
+function splitIntoSections(lines: string[]): Map<string, string[]> {
   const sections = new Map<string, string[]>();
   let currentSection = "header";
   sections.set(currentSection, []);
@@ -159,7 +267,12 @@ function splitIntoSections(
 
 function extractBulletItems(lines: string[]): string[] {
   return lines
-    .map((l) => l.replace(/^[\s]*[-•*–—]\s*/, "").replace(/^[\s]*\d+[.)]\s*/, "").trim())
+    .map((l) =>
+      l
+        .replace(/^[\s]*[-•*–—]\s*/, "")
+        .replace(/^[\s]*\d+[.)]\s*/, "")
+        .trim(),
+    )
     .filter((l) => l.length > 0);
 }
 
@@ -192,8 +305,7 @@ function extractExperience(text: string): NormalizedListing["experience"] {
     return { minYears: null, maxYears: null, level: "principal" };
   if (/\b(?:lead|principal)\b/.test(lower))
     return { minYears: null, maxYears: null, level: "lead" };
-  if (/\bsenior\b/.test(lower))
-    return { minYears: null, maxYears: null, level: "senior" };
+  if (/\bsenior\b/.test(lower)) return { minYears: null, maxYears: null, level: "senior" };
   if (/\b(?:mid|intermediate)\b/.test(lower))
     return { minYears: null, maxYears: null, level: "mid" };
   if (/\b(?:junior|entry.level|jr\.?)\b/.test(lower))
@@ -202,9 +314,7 @@ function extractExperience(text: string): NormalizedListing["experience"] {
   return null;
 }
 
-function inferLevelFromYears(
-  years: number,
-): "junior" | "mid" | "senior" | "lead" | "principal" {
+function inferLevelFromYears(years: number): "junior" | "mid" | "senior" | "lead" | "principal" {
   if (years >= 10) return "principal";
   if (years >= 7) return "lead";
   if (years >= 5) return "senior";
@@ -214,9 +324,7 @@ function inferLevelFromYears(
 
 function extractCompensation(text: string): NormalizedListing["compensation"] {
   // "$X,000 - $Y,000" or "$Xk - $Yk"
-  const fullMatch = text.match(
-    /\$\s*([\d,]+)\s*(?:k)?\s*[-–]\s*\$\s*([\d,]+)\s*(?:k)?/i,
-  );
+  const fullMatch = text.match(/\$\s*([\d,]+)\s*(?:k)?\s*[-–]\s*\$\s*([\d,]+)\s*(?:k)?/i);
   if (fullMatch) {
     const parseAmount = (s: string, raw: string) => {
       const num = parseInt(s.replace(/,/g, ""), 10);
@@ -259,9 +367,7 @@ function extractLocation(lines: string[]): {
     }
 
     // Labeled location line
-    const labeledMatch = line.match(
-      /^(?:location|office|based in|city)\s*:?\s*(.+)/i,
-    );
+    const labeledMatch = line.match(/^(?:location|office|based in|city)\s*:?\s*(.+)/i);
     if (labeledMatch) {
       const value = labeledMatch[1].trim();
       return {
@@ -348,10 +454,8 @@ export function normalizeListing(rawText: string): NormalizedListing {
   confidence.company = company ? "high" : "none";
   confidence.location = location ? "medium" : "none";
   confidence.skills = allSkills.length > 0 ? "medium" : "low";
-  confidence.requirements =
-    requirements.length > 0 ? "high" : "none";
-  confidence.responsibilities =
-    responsibilities.length > 0 ? "high" : "none";
+  confidence.requirements = requirements.length > 0 ? "high" : "none";
+  confidence.responsibilities = responsibilities.length > 0 ? "high" : "none";
   confidence.experience = experience ? "medium" : "low";
   confidence.compensation = compensation ? "high" : "none";
 

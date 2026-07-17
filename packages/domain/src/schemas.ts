@@ -7,9 +7,7 @@ import { z } from "zod";
 export const SkillSchema = z.object({
   name: z.string(),
   category: z.string().optional(),
-  proficiency: z
-    .enum(["beginner", "intermediate", "advanced", "expert"])
-    .optional(),
+  proficiency: z.enum(["beginner", "intermediate", "advanced", "expert"]).optional(),
 });
 
 export const CareerProfileSchema = z.object({
@@ -88,10 +86,7 @@ export const NormalizedListingSchema = z.object({
       currency: z.string().default("USD"),
     })
     .nullable(),
-  confidence: z.record(
-    z.string(),
-    z.enum(["high", "medium", "low", "none"]),
-  ),
+  confidence: z.record(z.string(), z.enum(["high", "medium", "low", "none"])),
   sectionsExtracted: z.array(z.string()),
 });
 
@@ -120,13 +115,7 @@ export const MatchEvidenceSchema = z.object({
 });
 
 export const MatchAssessmentSchema = z.object({
-  verdict: z.enum([
-    "strong",
-    "promising",
-    "mixed",
-    "weak",
-    "insufficient-evidence",
-  ]),
+  verdict: z.enum(["strong", "promising", "mixed", "weak", "insufficient-evidence"]),
   dimensions: z.array(MatchDimensionSchema),
   strongMatches: z.array(z.string()),
   partialMatches: z.array(z.string()),
@@ -141,12 +130,7 @@ export const MatchAssessmentSchema = z.object({
 // Listing Status
 // ---------------------------------------------------------------------------
 
-export const ListingStatusSchema = z.enum([
-  "new",
-  "saved",
-  "dismissed",
-  "flagged",
-]);
+export const ListingStatusSchema = z.enum(["new", "saved", "dismissed", "flagged"]);
 
 // ---------------------------------------------------------------------------
 // Persisted listing (as stored in the database)

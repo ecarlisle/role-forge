@@ -39,9 +39,7 @@ export function MatchAssessment({ assessment }: Props) {
       <div className="verdict" style={{ borderColor: VERDICT_COLORS[verdict] }}>
         <div className="verdict-label">{VERDICT_LABELS[verdict]}</div>
         {assessment.internalScore !== undefined && (
-          <div className="verdict-score">
-            Score: {(assessment.internalScore * 100).toFixed(0)}%
-          </div>
+          <div className="verdict-score">Score: {(assessment.internalScore * 100).toFixed(0)}%</div>
         )}
       </div>
 
@@ -50,8 +48,8 @@ export function MatchAssessment({ assessment }: Props) {
           <div className="section">
             <h4>✓ Strong Matches</h4>
             <ul>
-              {strongMatches.map((match, i) => (
-                <li key={i}>{match}</li>
+              {strongMatches.map((match) => (
+                <li key={match}>{match}</li>
               ))}
             </ul>
           </div>
@@ -61,8 +59,8 @@ export function MatchAssessment({ assessment }: Props) {
           <div className="section">
             <h4>~ Partial Matches</h4>
             <ul>
-              {partialMatches.map((match, i) => (
-                <li key={i}>{match}</li>
+              {partialMatches.map((match) => (
+                <li key={match}>{match}</li>
               ))}
             </ul>
           </div>
@@ -72,8 +70,8 @@ export function MatchAssessment({ assessment }: Props) {
           <div className="section">
             <h4>? Missing Evidence</h4>
             <ul>
-              {missingEvidence.map((item, i) => (
-                <li key={i}>{item}</li>
+              {missingEvidence.map((item) => (
+                <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
@@ -83,8 +81,8 @@ export function MatchAssessment({ assessment }: Props) {
           <div className="section concerns">
             <h4>⚠ Concerns</h4>
             <ul>
-              {concerns.map((concern, i) => (
-                <li key={i}>{concern}</li>
+              {concerns.map((concern) => (
+                <li key={concern}>{concern}</li>
               ))}
             </ul>
           </div>
@@ -94,13 +92,11 @@ export function MatchAssessment({ assessment }: Props) {
       <div className="dimensions">
         <h4>Dimension Breakdown</h4>
         <div className="dimensions-list">
-          {dimensions.map((dim, i) => (
-            <div key={i} className="dimension">
+          {dimensions.map((dim) => (
+            <div key={dim.name} className="dimension">
               <div className="dimension-header">
                 <span className="dimension-name">{dim.name}</span>
-                <span className={`dimension-score score-${dim.score}`}>
-                  {dim.score}
-                </span>
+                <span className={`dimension-score score-${dim.score}`}>{dim.score}</span>
                 <span className={`dimension-confidence conf-${dim.confidence}`}>
                   ({dim.confidence} confidence)
                 </span>

@@ -1,10 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import {
   CareerProfileSchema,
-  RawJobListingSchema,
-  NormalizedListingSchema,
-  MatchAssessmentSchema,
   ListingStatusSchema,
+  MatchAssessmentSchema,
+  NormalizedListingSchema,
+  RawJobListingSchema,
 } from "../src/schemas";
 
 describe("CareerProfileSchema", () => {
@@ -26,9 +26,7 @@ describe("CareerProfileSchema", () => {
           { title: "Junior Developer", company: "Agency Inc", years: 1 },
         ],
       },
-      education: [
-        { degree: "BS Computer Science", institution: "State University", year: 2015 },
-      ],
+      education: [{ degree: "BS Computer Science", institution: "State University", year: 2015 }],
       preferences: {
         locations: ["San Francisco", "Remote"],
         remote: true,

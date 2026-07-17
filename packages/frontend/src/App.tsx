@@ -1,14 +1,9 @@
-import { useState, useEffect } from "react";
-import {
-  fetchCareerProfiles,
-  fetchListings,
-  createListing,
-  updateListingStatus,
-} from "./api";
+import { useEffect, useState } from "react";
 import type { CareerProfile, Listing } from "./api";
+import { createListing, fetchCareerProfiles, fetchListings, updateListingStatus } from "./api";
 import { CareerProfileCard } from "./components/CareerProfileCard";
-import { ListingImport } from "./components/ListingImport";
 import { ListingDetail } from "./components/ListingDetail";
+import { ListingImport } from "./components/ListingImport";
 import "./App.css";
 
 function App() {
@@ -52,9 +47,7 @@ function App() {
   async function handleStatusUpdate(id: string, status: "saved" | "dismissed" | "flagged") {
     try {
       await updateListingStatus(id, status);
-      setListings(
-        listings.map((l) => (l.id === id ? { ...l, status } : l)),
-      );
+      setListings(listings.map((l) => (l.id === id ? { ...l, status } : l)));
       if (selectedListing?.id === id) {
         setSelectedListing({ ...selectedListing, status });
       }
@@ -90,10 +83,7 @@ function App() {
         <ListingImport onImport={handleImport} />
 
         {selectedListing && (
-          <ListingDetail
-            listing={selectedListing}
-            onStatusUpdate={handleStatusUpdate}
-          />
+          <ListingDetail listing={selectedListing} onStatusUpdate={handleStatusUpdate} />
         )}
 
         <section className="listings-history">
@@ -103,21 +93,19 @@ function App() {
           ) : (
             <ul className="listings-list">
               {listings.map((listing) => (
-                <li
-                  key={listing.id}
-                  className={`listing-item ${selectedListing?.id === listing.id ? "selected" : ""}`}
-                  onClick={() => setSelectedListing(listing)}
-                >
-                  <div className="listing-title">
-                    {listing.normalized.title || "Untitled"}
-                  </div>
-                  <div className="listing-company">
-                    {listing.normalized.company || "Unknown"}
-                  </div>
-                  <div className={`listing-verdict verdict-${listing.assessment.verdict}`}>
-                    {listing.assessment.verdict}
-                  </div>
-                  <div className="listing-status">{listing.status}</div>
+                <li key={listing.id}>
+                  <button
+                    type="button"
+                    className={`listing-item ${selectedListing?.id === listing.id ? "selected" : ""}`}
+                    onClick={() => setSelectedListing(listing)}
+                  >
+                    <div className="listing-title">{listing.normalized.title || "Untitled"}</div>
+                    <div className="listing-company">{listing.normalized.company || "Unknown"}</div>
+                    <div className={`listing-verdict verdict-${listing.assessment.verdict}`}>
+                      {listing.assessment.verdict}
+                    </div>
+                    <div className="listing-status">{listing.status}</div>
+                  </button>
                 </li>
               ))}
             </ul>

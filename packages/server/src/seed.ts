@@ -1,7 +1,7 @@
-import { normalizeListing, evaluateMatch, CareerProfileSchema } from "@roleforge/domain";
-import { getDb, closeDb } from "./db";
+import { CareerProfileSchema, evaluateMatch, normalizeListing } from "@roleforge/domain";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { closeDb, getDb } from "./db";
 
 console.log("🌱 Seeding database...\n");
 

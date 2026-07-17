@@ -28,8 +28,8 @@ export function CareerProfileCard({ profile }: Props) {
         <h3>Experience</h3>
         <p>{profile.experience.totalYears} years total</p>
         <ul className="roles-list">
-          {profile.experience.roles.map((role, i) => (
-            <li key={i}>
+          {profile.experience.roles.map((role) => (
+            <li key={`${role.title}-${role.company}`}>
               <strong>{role.title}</strong> at {role.company} ({role.years} years)
             </li>
           ))}
@@ -40,8 +40,8 @@ export function CareerProfileCard({ profile }: Props) {
         <div className="profile-section">
           <h3>Education</h3>
           <ul>
-            {profile.education.map((edu, i) => (
-              <li key={i}>
+            {profile.education.map((edu) => (
+              <li key={`${edu.degree}-${edu.institution}`}>
                 {edu.degree} - {edu.institution}
                 {edu.year && ` (${edu.year})`}
               </li>
@@ -66,10 +66,15 @@ export function CareerProfileCard({ profile }: Props) {
           {profile.preferences.compensation && (
             <p>
               <strong>Compensation:</strong>{" "}
-              {profile.preferences.compensation.min && `$${profile.preferences.compensation.min.toLocaleString()}`}
-              {profile.preferences.compensation.min && profile.preferences.compensation.max && " - "}
-              {profile.preferences.compensation.max && `$${profile.preferences.compensation.max.toLocaleString()}`}
-              {profile.preferences.compensation.currency && ` ${profile.preferences.compensation.currency}`}
+              {profile.preferences.compensation.min &&
+                `$${profile.preferences.compensation.min.toLocaleString()}`}
+              {profile.preferences.compensation.min &&
+                profile.preferences.compensation.max &&
+                " - "}
+              {profile.preferences.compensation.max &&
+                `$${profile.preferences.compensation.max.toLocaleString()}`}
+              {profile.preferences.compensation.currency &&
+                ` ${profile.preferences.compensation.currency}`}
             </p>
           )}
         </div>

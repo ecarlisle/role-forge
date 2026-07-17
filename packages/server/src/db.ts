@@ -46,13 +46,13 @@ export function closeDb() {
 }
 
 export function getProfile(id: string): any {
-  const result = getDb().query('SELECT * FROM career_profiles WHERE id = ?').get(id) as any;
+  const result = getDb().query("SELECT * FROM career_profiles WHERE id = ?").get(id) as any;
   return result ? JSON.parse(result.data) : null;
 }
 
 export function getAllListings(): any[] {
-  const rows = getDb().query('SELECT * FROM listings ORDER BY imported_at DESC').all() as any[];
-  return rows.map(row => ({
+  const rows = getDb().query("SELECT * FROM listings ORDER BY imported_at DESC").all() as any[];
+  return rows.map((row) => ({
     ...row,
     source: JSON.parse(row.source),
     normalized: JSON.parse(row.normalized),
@@ -61,7 +61,7 @@ export function getAllListings(): any[] {
 }
 
 export function getListing(id: string): any {
-  const row = getDb().query('SELECT * FROM listings WHERE id = ?').get(id) as any;
+  const row = getDb().query("SELECT * FROM listings WHERE id = ?").get(id) as any;
   if (!row) return null;
   return {
     ...row,
@@ -89,5 +89,5 @@ export function saveListing(listing: any): void {
 }
 
 export function updateListingStatus(id: string, status: string): void {
-  getDb().query('UPDATE listings SET status = ? WHERE id = ?').run(status, id);
+  getDb().query("UPDATE listings SET status = ? WHERE id = ?").run(status, id);
 }

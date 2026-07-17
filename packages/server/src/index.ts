@@ -3,19 +3,13 @@
  */
 
 import {
-  normalizeListing,
+  type CareerProfile,
   evaluateMatch,
   isValidTransition,
-  type CareerProfile,
   type ListingStatus,
+  normalizeListing,
 } from "@roleforge/domain";
-import {
-  getProfile,
-  getAllListings,
-  getListing,
-  saveListing,
-  updateListingStatus,
-} from "./db";
+import { getAllListings, getListing, getProfile, saveListing, updateListingStatus } from "./db";
 
 const PORT = 3100;
 
@@ -130,10 +124,7 @@ async function handleRequest(req: Request): Promise<Response> {
       const currentStatus = listing.status as ListingStatus;
 
       if (!isValidTransition(currentStatus, body.status)) {
-        return errorResponse(
-          `Invalid transition: ${currentStatus} → ${body.status}`,
-          400,
-        );
+        return errorResponse(`Invalid transition: ${currentStatus} → ${body.status}`, 400);
       }
 
       updateListingStatus(id, body.status);
@@ -143,10 +134,7 @@ async function handleRequest(req: Request): Promise<Response> {
     return errorResponse("Not found", 404);
   } catch (err) {
     console.error("Server error:", err);
-    return errorResponse(
-      err instanceof Error ? err.message : "Internal error",
-      500,
-    );
+    return errorResponse(err instanceof Error ? err.message : "Internal error", 500);
   }
 }
 

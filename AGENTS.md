@@ -132,6 +132,9 @@ Expected commands:
 * `bun run test`
 * `bun run lint`
 * `bun run format`
+* `bun run format:check`
+* `bun run check`
+* `bun run check:write`
 
 Run relevant checks before completing a change.
 
@@ -140,7 +143,12 @@ For changes affecting shared domain logic, run at minimum:
 * `bun run typecheck`
 * `bun run test`
 
-For broader changes, run the complete validation suite.
+For broader implementation changes, run the complete validation sequence:
+
+* `bun run check`
+* `bun run typecheck`
+* `bun run test`
+* `bun run build`
 
 ## Testing
 
@@ -193,6 +201,8 @@ Deterministic matching should remain available even if agent-backed evaluation i
 * Validate data at system boundaries.
 * Keep UI components separate from domain calculations.
 * Add comments only where intent is not evident from the code.
+
+Use `bun run format` to apply consistent formatting. Use `bun run lint` to check for code quality issues. Both commands use Biome, which is configured in `biome.json` at the repository root. See `docs/biome-configuration.md` for details on disabled rules and their rationale.
 
 ## Documentation
 

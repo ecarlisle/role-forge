@@ -51,8 +51,8 @@ export function ListingDetail({ listing, onStatusUpdate }: Props) {
               <div className="section">
                 <h4>Requirements</h4>
                 <ul>
-                  {normalized.requirements.map((req, i) => (
-                    <li key={i}>{req}</li>
+                  {normalized.requirements.map((req) => (
+                    <li key={req}>{req}</li>
                   ))}
                 </ul>
               </div>
@@ -62,8 +62,8 @@ export function ListingDetail({ listing, onStatusUpdate }: Props) {
               <div className="section">
                 <h4>Responsibilities</h4>
                 <ul>
-                  {normalized.responsibilities.map((resp, i) => (
-                    <li key={i}>{resp}</li>
+                  {normalized.responsibilities.map((resp) => (
+                    <li key={resp}>{resp}</li>
                   ))}
                 </ul>
               </div>
@@ -73,8 +73,8 @@ export function ListingDetail({ listing, onStatusUpdate }: Props) {
               <div className="section">
                 <h4>Benefits</h4>
                 <ul>
-                  {normalized.benefits.map((benefit, i) => (
-                    <li key={i}>{benefit}</li>
+                  {normalized.benefits.map((benefit) => (
+                    <li key={benefit}>{benefit}</li>
                   ))}
                 </ul>
               </div>
@@ -84,9 +84,11 @@ export function ListingDetail({ listing, onStatusUpdate }: Props) {
               <div className="section">
                 <h4>Compensation</h4>
                 <p>
-                  {normalized.compensation.min && `$${normalized.compensation.min.toLocaleString()}`}
+                  {normalized.compensation.min &&
+                    `$${normalized.compensation.min.toLocaleString()}`}
                   {normalized.compensation.min && normalized.compensation.max && " - "}
-                  {normalized.compensation.max && `$${normalized.compensation.max.toLocaleString()}`}
+                  {normalized.compensation.max &&
+                    `$${normalized.compensation.max.toLocaleString()}`}
                   {normalized.compensation.currency && ` ${normalized.compensation.currency}`}
                 </p>
               </div>
@@ -99,6 +101,7 @@ export function ListingDetail({ listing, onStatusUpdate }: Props) {
 
       <div className="status-actions">
         <button
+          type="button"
           onClick={() => onStatusUpdate(listing.id, "saved")}
           disabled={listing.status === "saved"}
           className="btn-save"
@@ -106,6 +109,7 @@ export function ListingDetail({ listing, onStatusUpdate }: Props) {
           {listing.status === "saved" ? "✓ Saved" : "Save"}
         </button>
         <button
+          type="button"
           onClick={() => onStatusUpdate(listing.id, "dismissed")}
           disabled={listing.status === "dismissed"}
           className="btn-dismiss"
@@ -113,6 +117,7 @@ export function ListingDetail({ listing, onStatusUpdate }: Props) {
           {listing.status === "dismissed" ? "✓ Dismissed" : "Dismiss"}
         </button>
         <button
+          type="button"
           onClick={() => onStatusUpdate(listing.id, "flagged")}
           disabled={listing.status === "flagged"}
           className="btn-flag"

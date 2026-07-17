@@ -114,6 +114,9 @@ All data is stored in a local SQLite database (`data/roleforge.db`):
 - **SQLite**: Embedded database, no server process required
 - **Zod**: Runtime validation with TypeScript type inference
 - **Vitest**: Fast testing framework compatible with Vite
+- **Biome**: Unified linting, formatting, and import organization
+
+See [docs/biome-configuration.md](biome-configuration.md) for details on linting rules and disabled exceptions.
 
 ## Development Workflow
 

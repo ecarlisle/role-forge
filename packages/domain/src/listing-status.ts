@@ -17,10 +17,7 @@ const VALID_TRANSITIONS: Record<ListingStatus, ListingStatus[]> = {
 /**
  * Check whether a status transition is allowed.
  */
-export function isValidTransition(
-  from: ListingStatus,
-  to: ListingStatus,
-): boolean {
+export function isValidTransition(from: ListingStatus, to: ListingStatus): boolean {
   return VALID_TRANSITIONS[from]?.includes(to) ?? false;
 }
 

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { normalizeListing } from "../src/normalize-listing";
 
 describe("normalizeListing", () => {
@@ -188,7 +188,9 @@ Just paragraphs of text.`;
 
     const result = normalizeListing(text);
 
-    expect(result.title).toBe("This is just some random text without any clear job listing structure.");
+    expect(result.title).toBe(
+      "This is just some random text without any clear job listing structure.",
+    );
     expect(result.company).toBe("It doesn't have any section headers or standard formatting.");
     expect(result.requirements).toEqual([]);
     expect(result.confidence.title).toBe("high");

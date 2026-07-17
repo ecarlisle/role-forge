@@ -8,20 +8,17 @@
 
 import type {
   CareerProfile,
-  NormalizedListing,
   MatchAssessment,
   MatchDimension,
   MatchEvidence,
+  NormalizedListing,
 } from "./schemas";
 
 // ---------------------------------------------------------------------------
 // Main entry point
 // ---------------------------------------------------------------------------
 
-export function evaluateMatch(
-  profile: CareerProfile,
-  listing: NormalizedListing,
-): MatchAssessment {
+export function evaluateMatch(profile: CareerProfile, listing: NormalizedListing): MatchAssessment {
   const dimensions: MatchDimension[] = [];
   const evidence: MatchEvidence[] = [];
   const strongMatches: string[] = [];
@@ -55,8 +52,7 @@ export function evaluateMatch(
 
   // -- Add missing evidence for entirely absent fields -----------------------
   if (!listing.title) missingEvidence.push("Job title could not be determined");
-  if (listing.skills.length === 0)
-    missingEvidence.push("No skills detected in listing");
+  if (listing.skills.length === 0) missingEvidence.push("No skills detected in listing");
 
   // -- Recommended action ----------------------------------------------------
   const recommendedAction = computeRecommendedAction(verdict, concerns);
@@ -88,8 +84,7 @@ function evaluateTitleMatch(
       name: "Title alignment",
       score: "none",
       confidence: "none",
-      explanation:
-        "Cannot evaluate title match — listing title could not be extracted.",
+      explanation: "Cannot evaluate title match — listing title could not be extracted.",
       evidenceIds: [],
     };
   }
@@ -98,10 +93,7 @@ function evaluateTitleMatch(
   const profileTitleLower = profile.title.toLowerCase();
 
   // Exact substring match
-  if (
-    listingLower.includes(profileTitleLower) ||
-    profileTitleLower.includes(listingLower)
-  ) {
+  if (listingLower.includes(profileTitleLower) || profileTitleLower.includes(listingLower)) {
     const id = `evidence:title:exact`;
     evidence.push({
       id,
@@ -191,8 +183,7 @@ function evaluateSkillOverlap(
         name: "Skill overlap",
         score: "none",
         confidence: "none",
-        explanation:
-          "No skills detected in the listing. Skill overlap cannot be assessed.",
+        explanation: "No skills detected in the listing. Skill overlap cannot be assessed.",
         evidenceIds: [],
       },
       strongMatches,
@@ -201,9 +192,7 @@ function evaluateSkillOverlap(
     };
   }
 
-  const profileSkillSet = new Set(
-    profile.skills.map((s) => s.name.toLowerCase()),
-  );
+  const profileSkillSet = new Set(profile.skills.map((s) => s.name.toLowerCase()));
   const listingSkillLower = listing.skills.map((s) => s.toLowerCase());
 
   const matched: string[] = [];
@@ -220,9 +209,7 @@ function evaluateSkillOverlap(
   // Build evidence for each matched skill
   const evidenceIds: string[] = [];
   for (const skill of matched) {
-    const profileSkill = profile.skills.find(
-      (s) => s.name.toLowerCase() === skill.toLowerCase(),
-    );
+    const profileSkill = profile.skills.find((s) => s.name.toLowerCase() === skill.toLowerCase());
     const id = `evidence:skill:${skill.toLowerCase()}`;
     evidenceIds.push(id);
     evidence.push({
@@ -253,9 +240,7 @@ function evaluateSkillOverlap(
 
   if (ratio >= 0.4 && matched.length >= 1) {
     if (unmatched.length > 0) {
-      partialMatches.push(
-        `Missing skills: ${unmatched.join(", ")}`,
-      );
+      partialMatches.push(`Missing skills: ${unmatched.join(", ")}`);
     }
     return {
       dimension: {
@@ -300,8 +285,7 @@ function evaluateExperienceMatch(
       name: "Experience level",
       score: "none",
       confidence: "none",
-      explanation:
-        "Listing does not specify experience requirements. Cannot assess alignment.",
+      explanation: "Listing does not specify experience requirements. Cannot assess alignment.",
       evidenceIds: [],
     };
   }
@@ -570,9 +554,7 @@ function computeVerdict(dimensions: MatchDimension[]): {
   const partialCount = dimensions.filter(
     (d) => d.score === "partial" && d.confidence !== "none",
   ).length;
-  const weakCount = dimensions.filter(
-    (d) => d.score === "weak" && d.confidence !== "none",
-  ).length;
+  const weakCount = dimensions.filter((d) => d.score === "weak" && d.confidence !== "none").length;
 
   if (strongCount >= 3 && weakCount === 0) {
     return { verdict: "strong", internalScore };
@@ -587,10 +569,7 @@ function computeVerdict(dimensions: MatchDimension[]): {
   return { verdict: "weak", internalScore };
 }
 
-function computeRecommendedAction(
-  verdict: MatchAssessment["verdict"],
-  concerns: string[],
-): string {
+function computeRecommendedAction(verdict: MatchAssessment["verdict"], concerns: string[]): string {
   if (concerns.length > 0) {
     return `Review concerns before proceeding. Consider whether ${concerns[0].toLowerCase()}`;
   }
