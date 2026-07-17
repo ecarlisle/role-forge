@@ -1,0 +1,57 @@
+{
+  "id": "profile-jane-doe",
+  "name": "Jane Doe",
+  "title": "Senior Frontend Engineer",
+  "summary": "Experienced frontend engineer with 8 years building scalable web applications. Passionate about React, TypeScript, and user experience.",
+  "skills": [
+    { "name": "React", "category": "Frontend", "proficiency": "expert" },
+    { "name": "TypeScript", "category": "Languages", "proficiency": "expert" },
+    { "name": "JavaScript", "category": "Languages", "proficiency": "expert" },
+    { "name": "Next.js", "category": "Frontend", "proficiency": "advanced" },
+    { "name": "GraphQL", "category": "Backend", "proficiency": "intermediate" },
+    { "name": "Node.js", "category": "Backend", "proficiency": "intermediate" },
+    { "name": "CSS", "category": "Frontend", "proficiency": "advanced" },
+    { "name": "HTML", "category": "Frontend", "proficiency": "expert" },
+    { "name": "Git", "category": "Tools", "proficiency": "advanced" },
+    { "name": "Testing", "category": "Testing", "proficiency": "advanced" },
+    { "name": "Vitest", "category": "Testing", "proficiency": "intermediate" },
+    { "name": "Playwright", "category": "Testing", "proficiency": "intermediate" }
+  ],
+  "experience": {
+    "totalYears": 8,
+    "roles": [
+      {
+        "title": "Senior Frontend Engineer",
+        "company": "TechCorp",
+        "years": 3
+      },
+      {
+        "title": "Frontend Developer",
+        "company": "StartupXYZ",
+        "years": 3
+      },
+      {
+        "title": "Junior Developer",
+        "company": "WebAgency",
+        "years": 2
+      }
+    ]
+  },
+  "education": [
+    {
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "State University",
+      "year": 2015
+    }
+  ],
+  "preferences": {
+    "locations": ["San Francisco", "Remote"],
+    "remote": true,
+    "compensation": {
+      "min": 160000,
+      "max": 220000,
+      "currency": "USD"
+    },
+    "titles": ["Senior Frontend Engineer", "Staff Engineer", "Principal Engineer"]
+  }
+}

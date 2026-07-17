@@ -1,0 +1,580 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #1a1a1a;
+  background: #f5f5f5;
+}
+
+.app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+}
+
+.app-header p {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.app-main {
+  display: grid;
+  gap: 2rem;
+}
+
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+}
+
+/* Career Profile Card */
+.career-profile {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.career-profile h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #1e40af;
+}
+
+.profile-title {
+  font-size: 1.2rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.profile-summary {
+  margin-bottom: 1.5rem;
+  color: #374151;
+}
+
+.profile-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.profile-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: #374151;
+}
+
+.skills-list,
+.roles-list {
+  list-style: none;
+  padding: 0;
+}
+
+.skills-list li,
+.roles-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.skill-category {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Listing Import */
+.listing-import {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.listing-import h2 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.listing-import textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.listing-import button[type="submit"] {
+  background: #1e40af;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.listing-import button[type="submit"]:hover:not(:disabled) {
+  background: #1e3a8a;
+}
+
+.listing-import button[type="submit"]:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.fixture-loader {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.fixture-loader p {
+  margin-bottom: 1rem;
+  color: #6b7280;
+}
+
+.fixture-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.fixture-btn {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.fixture-btn:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+/* Listing Detail */
+.listing-detail {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.listing-detail h2 {
+  margin-bottom: 1rem;
+  color: #1e40af;
+}
+
+.listing-company {
+  color: #6b7280;
+  font-weight: normal;
+}
+
+.listing-meta {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.meta-item {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.listing-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.column h3 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.raw-text {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.normalized-sections {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section h4 {
+  margin-bottom: 0.75rem;
+  color: #374151;
+  font-size: 1rem;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skills-tags li {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  border-bottom: none;
+}
+
+/* Match Assessment */
+.match-assessment {
+  background: #f9fafb;
+  padding: 2rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.match-assessment h3 {
+  margin-bottom: 1.5rem;
+  color: #374151;
+}
+
+.verdict {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+  margin-bottom: 2rem;
+}
+
+.verdict-label {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.verdict-score {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.assessment-sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.assessment-sections .section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.assessment-sections h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.assessment-sections.concerns {
+  background: #fef2f2;
+}
+
+.dimensions {
+  margin-bottom: 2rem;
+}
+
+.dimensions h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.dimensions-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.dimension {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.dimension-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.dimension-name {
+  font-weight: 600;
+  color: #374151;
+}
+
+.dimension-score {
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.score-strong {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.score-partial {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.score-weak {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.score-none {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.dimension-confidence {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.dimension-explanation {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.evidence,
+.recommendation {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.evidence h4,
+.recommendation h4 {
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+.evidence-type {
+  display: inline-block;
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+}
+
+.recommendation p {
+  color: #1e40af;
+  font-weight: 500;
+}
+
+/* Status Actions */
+.status-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.status-actions button {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save {
+  background: #10b981;
+  color: white;
+}
+
+.btn-save:hover:not(:disabled) {
+  background: #059669;
+}
+
+.btn-dismiss {
+  background: #6b7280;
+  color: white;
+}
+
+.btn-dismiss:hover:not(:disabled) {
+  background: #4b5563;
+}
+
+.btn-flag {
+  background: #f59e0b;
+  color: white;
+}
+
+.btn-flag:hover:not(:disabled) {
+  background: #d97706;
+}
+
+.status-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Listings History */
+.listings-history {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.listings-history h2 {
+  margin-bottom: 1.5rem;
+  color: #374151;
+}
+
+.listings-list {
+  list-style: none;
+  padding: 0;
+}
+
+.listing-item {
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.listing-item:hover {
+  border-color: #3b82f6;
+  background: #f9fafb;
+}
+
+.listing-item.selected {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.listing-title {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.listing-company {
+  color: #6b7280;
+}
+
+.listing-verdict {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.verdict-strong {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.verdict-promising {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.verdict-mixed {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.verdict-weak {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.verdict-insufficient-evidence {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.listing-status {
+  text-align: right;
+  color: #6b7280;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .listing-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .listing-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .listing-company,
+  .listing-verdict,
+  .listing-status {
+    text-align: left;
+  }
+}

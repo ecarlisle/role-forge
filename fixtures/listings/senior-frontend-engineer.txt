@@ -1,0 +1,37 @@
+Senior Frontend Engineer
+InnovateTech Solutions
+
+Location: San Francisco, CA or Remote
+Type: Full-time
+
+About Us:
+InnovateTech Solutions is a fast-growing SaaS company building next-generation collaboration tools. We're looking for a Senior Frontend Engineer to join our product team and help shape the future of our platform.
+
+The Role:
+As a Senior Frontend Engineer, you'll work closely with product managers, designers, and backend engineers to deliver high-quality user experiences. You'll own features from conception to deployment and mentor junior team members.
+
+Requirements:
+- 5+ years of experience with React and modern JavaScript
+- Strong TypeScript skills
+- Experience with Next.js or similar React frameworks
+- GraphQL API integration experience
+- Proficiency with testing frameworks (Jest, Vitest, or similar)
+- Familiarity with CI/CD pipelines and Git workflows
+- Excellent communication and collaboration skills
+
+Responsibilities:
+- Build and maintain React components and applications
+- Collaborate with designers to implement pixel-perfect UIs
+- Write comprehensive unit and integration tests
+- Participate in code reviews and mentor junior developers
+- Optimize application performance and accessibility
+- Contribute to architectural decisions and technical roadmap
+
+Benefits:
+- Competitive salary: $170,000 - $210,000
+- Health, dental, and vision insurance
+- 401(k) with company match
+- Unlimited PTO
+- Remote work flexibility
+- Annual learning and development budget
+- Home office stipend

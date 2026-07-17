@@ -1,0 +1,45 @@
+Fullstack Developer
+DataFlow Analytics
+
+Location: New York, NY (Hybrid)
+Type: Full-time
+
+About the Company:
+DataFlow Analytics is a B2B analytics platform serving enterprise customers. We process millions of events daily and help businesses make data-driven decisions.
+
+Job Description:
+We're seeking a Fullstack Developer to join our engineering team. You'll work across the entire stack, building features that help our customers visualize and analyze complex datasets.
+
+What You'll Do:
+- Develop features across frontend and backend using React and Node.js
+- Design and implement RESTful APIs and GraphQL endpoints
+- Work with PostgreSQL and Redis for data storage and caching
+- Build data visualization components using D3.js
+- Deploy and maintain services using Docker and Kubernetes
+- Collaborate with data engineers on pipeline improvements
+
+What We're Looking For:
+- 3+ years of fullstack development experience
+- Proficiency in React and Node.js
+- Experience with Python for backend services
+- Strong SQL skills (PostgreSQL preferred)
+- Familiarity with containerization (Docker, Kubernetes)
+- Experience with cloud platforms (AWS or GCP)
+- Understanding of data processing pipelines
+
+Nice to Have:
+- Experience with data visualization libraries (D3.js, Chart.js)
+- Knowledge of streaming technologies (Kafka, Redis Streams)
+- Background in analytics or data engineering
+
+Compensation:
+- $130,000 - $160,000 base salary
+- Annual bonus up to 15%
+- Stock options
+
+Benefits:
+- Comprehensive health coverage
+- 401(k) plan
+- 20 days PTO
+- Hybrid work model (3 days in office)
+- Professional development budget
